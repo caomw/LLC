@@ -18,15 +18,25 @@ for i=1:length(d)
     end
 end
 
+filenames = {};
+fileCategory = {};
+totalNumFiles = 0;
+
+for i=1:length(categories)
+    c_dir = strcat(image_dir, '/', categories{i});
+    fnames = dir(fullfile(c_dir, '*.jpg'));
+    num_files = size(fnames,1);
+    % filenames = cell(num_files,1);
+
+    for f = 1:num_files
+        filenames{totalNumFiles+1} = strcat(categories{i}, '/', fnames(f).name);
+        fileCategory{totalNumFiles+1} = i;
+        totalNumFiles = totalNumFiles+1;
+    end
+end
+
 % for other parameters, see BuildPyramid
 
-fnames = dir(fullfile(image_dir, '*.jpg'));
-num_files = size(fnames,1);
-filenames = cell(num_files,1);
-
-for f = 1:num_files
-	filenames{f} = fnames(f).name;
-end
 
 % return pyramid descriptors for all files in filenames
 pyramid_all = BuildPyramid(filenames,image_dir,data_dir);
