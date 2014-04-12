@@ -1,6 +1,7 @@
 clear; clc; close all;
 addpath('./SpatialPyramid');
 addpath('./liblinear-1.94/windows');
+addpath('./cell2csv');
 
 % Example of how to use the BuildPyramid function
 % set image_dir and data_dir to your actual directories
@@ -52,3 +53,5 @@ model = train(trainingLabels,trainingSet);
 
 testingSet = sparse(testingSet);
 [predicted_label, accuracy, decision_values] = predict(testingLabels, testingSet, model);
+
+[ acc, averageAccuracy, confusionMat ] = createConfusionMatrix( predicted_label, testingLabels, categories);
