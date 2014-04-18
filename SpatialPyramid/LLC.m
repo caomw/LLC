@@ -24,7 +24,7 @@ function [ C ] = LLC( X, B )
         c = B_1x * B_1x'; 
         
         c_hat = c \ one; % calculate the new code
-        c_hat = chat / sum(c_hat); % normalize
+        c_hat = c_hat / sum(c_hat); % normalize
         
         C(i,ind) = c_hat; %check dims o this too
     end
