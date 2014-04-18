@@ -104,27 +104,26 @@ for f = 1:length(imageFileList)
     texton_ind.y = features.y;
     texton_ind.wid = features.wid;
     texton_ind.hgt = features.hgt;
-    %run in batches to keep the memory foot print small
-    batchSize = 100000;
-    if ndata <= batchSize
-        %[newInd, newDist] = knnsearch(dictionary,features.data,'K',4);
-        %texton_ind.data = reshape(newInd,[],1);
-        codes = LLC(features.data, dictionary);
-        texton_ind.data = codes;
+    
+    codes = LLC(features.data, dictionary);
+    texton_ind.data = codes;
         
-        %dist_mat = sp_dist2(features.data, dictionary);
-        %[min_dist, min_ind] = min(dist_mat, [], 2);
-        %texton_ind.data = min_ind;
-    else
-        for j = 1:batchSize:ndata
-            lo = j;
-            hi = min(j+batchSize-1,ndata);
-            newDict = knnsearch(features.data(lo:hi,:),dictionary,'K',10);
-            dist_mat = sp_dist2(features.data(lo:hi,:), dictionary);
-            [min_dist, min_ind] = min(dist_mat, [], 2);
-            texton_ind.data(lo:hi,:) = min_ind;
-        end
-    end
+    %run in batches to keep the memory foot print small
+%     batchSize = 100000;
+%     if ndata <= batchSize
+%         dist_mat = sp_dist2(features.data, dictionary);
+%         [min_dist, min_ind] = min(dist_mat, [], 2);
+%         texton_ind.data = min_ind;
+%     else
+%         for j = 1:batchSize:ndata
+%             lo = j;
+%             hi = min(j+batchSize-1,ndata);
+%             newDict = knnsearch(features.data(lo:hi,:),dictionary,'K',10);
+%             dist_mat = sp_dist2(features.data(lo:hi,:), dictionary);
+%             [min_dist, min_ind] = min(dist_mat, [], 2);
+%             texton_ind.data(lo:hi,:) = min_ind;
+%         end
+%     end
 
     H = hist(texton_ind.data, 1:params.dictionarySize);
     H_all = [H_all; H];

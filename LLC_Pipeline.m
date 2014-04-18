@@ -38,7 +38,8 @@ for i=1:length(categories)
 end
 
 % return pyramid descriptors for all files in filenames
-pyramid_all = BuildPyramid(filenames,image_dir,data_dir);
+params.dictionarySize = 1024;
+pyramid_all = BuildPyramid(filenames,image_dir,data_dir,params);
 
 % partition the data
 [ trainingSet, trainingLabels, testingSet, testingLabels ] = divideSets(pyramid_all, fileCategory, filesInCategory, 100 );

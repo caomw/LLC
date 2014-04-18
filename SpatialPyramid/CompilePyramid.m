@@ -105,10 +105,14 @@ for f = 1:length(imageFileList)
             y_lo = floor(hgt/binsHigh * (j-1));
             y_hi = floor(hgt/binsHigh * j);
             
+            foo = (texton_ind.x > x_lo) & (texton_ind.x <= x_hi) & ...
+                  (texton_ind.y > y_lo) & (texton_ind.y <= y_hi);
+            
             texton_patch = texton_ind.data( (texton_ind.x > x_lo) & (texton_ind.x <= x_hi) & ...
                                             (texton_ind.y > y_lo) & (texton_ind.y <= y_hi));
             
             % make histogram of features in bin
+            %pyramid_cell{1}(i,j,:) = texton_patch;
             pyramid_cell{1}(i,j,:) = hist(texton_patch, 1:params.dictionarySize)./length(texton_ind.data);
         end
     end
