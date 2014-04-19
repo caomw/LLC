@@ -105,9 +105,6 @@ for f = 1:length(imageFileList)
             y_lo = floor(hgt/binsHigh * (j-1));
             y_hi = floor(hgt/binsHigh * j);
             
-            foo = (texton_ind.x > x_lo) & (texton_ind.x <= x_hi) & ...
-                  (texton_ind.y > y_lo) & (texton_ind.y <= y_hi);
-            
             texton_patch = texton_ind.data( (texton_ind.x > x_lo) & (texton_ind.x <= x_hi) & ...
                                             (texton_ind.y > y_lo) & (texton_ind.y <= y_hi));
             
@@ -123,7 +120,7 @@ for f = 1:length(imageFileList)
         pyramid_cell{l} = zeros(num_bins, num_bins, params.dictionarySize);
         for i=1:num_bins
             for j=1:num_bins
-                %max pooling instead of sum pooling
+                % Changed to use max pooling instead of sum pooling
                 pyramid_cell{l}(i,j,:) = max([ ...
                                                 pyramid_cell{l-1}(2*i-1,2*j-1,:); ...
                                                 pyramid_cell{l-1}(2*i,2*j-1,:); ...
