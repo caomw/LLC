@@ -1,6 +1,5 @@
 # the data folder for program output
 data
-*.csv
 
 # Windows default autosave extension
 

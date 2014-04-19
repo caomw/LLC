@@ -1,0 +1,16 @@
+,CALsuburb,MITcoast,MITforest,MIThighway,MITinsidecity,MITmountain,MITopencountry,MITstreet,MITtallbuilding,PARoffice,bedroom,industrial,kitchen,livingroom,store,Percent Correct
+CALsuburb,141,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+MITcoast,0,0,0,0,0,0,0,260,0,0,0,0,0,0,0,0
+MITforest,0,0,0,0,0,0,0,228,0,0,0,0,0,0,0,0
+MIThighway,0,0,0,0,0,0,0,160,0,0,0,0,0,0,0,0
+MITinsidecity,0,0,0,0,0,0,0,208,0,0,0,0,0,0,0,0
+MITmountain,0,0,0,0,0,0,0,274,0,0,0,0,0,0,0,0
+MITopencountry,0,0,0,0,0,0,0,310,0,0,0,0,0,0,0,0
+MITstreet,0,0,0,0,0,0,0,192,0,0,0,0,0,0,0,1
+MITtallbuilding,0,0,0,0,0,0,0,256,0,0,0,0,0,0,0,0
+PARoffice,48,0,0,0,0,0,0,0,0,35,0,0,32,0,0,0.30435
+bedroom,31,0,0,0,0,0,0,5,0,9,21,0,50,0,0,0.18103
+industrial,42,0,0,0,0,0,0,0,0,30,7,0,132,0,0,0
+kitchen,14,0,0,0,0,0,0,0,0,12,2,0,82,0,0,0.74545
+livingroom,45,0,0,0,0,0,0,0,0,12,2,0,130,0,0,0
+store,45,0,0,0,0,0,0,0,0,27,4,0,139,0,0,0
