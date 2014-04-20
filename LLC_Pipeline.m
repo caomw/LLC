@@ -2,6 +2,7 @@ clear; clc; close all;
 addpath('./SpatialPyramid');
 addpath('./liblinear-1.94/windows');
 addpath('./cell2csv');
+addpath('./SubFunctions');
 
 % Example of how to use the BuildPyramid function
 % set image_dir and data_dir to your actual directories
@@ -40,14 +41,11 @@ end
 % return pyramid descriptors for all files in filenames
 params.dictionarySize = 200;
 pyramid_all = BuildPyramid(filenames,image_dir,data_dir,params);
+%pyramid_all = BuildPyramid(filenames,image_dir,data_dir,params,1,0,1);
 
 % partition the data
 [ trainingSet, trainingLabels, testingSet, testingLabels ] = divideSets(pyramid_all, fileCategory, filesInCategory, 100 );
 
-
-
-% compute histogram intersection kernel
-%K = hist_isect(pyramid_all, pyramid_all); 
 
 trainingSet = sparse(trainingSet);
 model = train(trainingLabels,trainingSet);

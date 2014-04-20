@@ -2,14 +2,13 @@
 % X is the list of feature vectors
 function [ C ] = LLC( X, B )
 
-    K = 2; % The number of nearest neighbors
+    K = 5; % The number of nearest neighbors
     numFeatures = size(X,1); % The number features
     dims = size(X,2);  % number of dimensions in each feature
     codebookSize = size(B,1);
     
     %find the k-nearest neighbors for each feature
     [knnInd, knnDist] = knnsearch(B,X,'K',K);
-    knnDist = knnDist.^2; % convert from Eucl dist to squared Eucl distance
     
     C = zeros(numFeatures,codebookSize);
     for i =1:numFeatures
